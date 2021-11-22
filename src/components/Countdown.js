@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import { spacing, fontSize } from '../utils/sizes';
 
@@ -14,17 +14,21 @@ export const Countdown = ({ minutes = 1, isPaused, setProgress, onEnd }) => {
     setMillis((time) => {
       if (time === 0) {
         clearInterval(interval.current);
-        onEnd();
         return time;
       } else {
         const timeLeft = time - 1000;
-        // setProgress(timeLeft / minutesToMillis(minutes));
         const timeToCompletion = 1 - (time / minutesToMillis(minutes));
-        setProgress(1 - (time / minutesToMillis(minutes)))
         return timeLeft;
       }
     });
   };
+
+  useEffect(()=>{
+    setProgress(1 - (millis / minutesToMillis(minutes)))
+    if (millis === 0) {
+      onEnd();
+    }
+  }, [millis])
 
   useEffect(() => {
     if (isPaused) {

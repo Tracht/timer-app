@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Vibration, Platform } from 'react-native';
+import { SafeAreaView, View, StyleSheet, Text, Vibration, Platform } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 
 import { colors } from '../../utils/colors';
 import { spacing } from '../../utils/sizes';
 import { Countdown } from '../../components/Countdown';
 import { RoundedButton } from '../../components/RoundedButton';
-import { Timing } from './timing';
+import { TimingButtons } from './TimingButtons';
 
 export const Timer = ({ focusSubject, onTimerEnd, onClearSubject }) => {
   const DEFAULT_TIME = 0.5; // seconds
@@ -41,16 +41,14 @@ export const Timer = ({ focusSubject, onTimerEnd, onClearSubject }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.subContainer}>
-        <View style={styles.countdown}>
-          <Countdown
-            minutes={minutes}
-            isPaused={!hasStarted}
-            setProgress={setProgress}
-            onEnd={onEnd}
-          />
-        </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.countdown}>
+        <Countdown
+          minutes={minutes}
+          isPaused={!hasStarted}
+          setProgress={setProgress}
+          onEnd={onEnd}
+        />
       </View>
 
       <View style={styles.taskWrapper}>
@@ -65,7 +63,7 @@ export const Timer = ({ focusSubject, onTimerEnd, onClearSubject }) => {
       />
 
       <View style={styles.buttonWrapper}>
-        <Timing onChangeTime={changeTime} />
+        <TimingButtons onChangeTime={changeTime} />
       </View>
 
       <View style={styles.buttonWrapper}>
@@ -82,7 +80,7 @@ export const Timer = ({ focusSubject, onTimerEnd, onClearSubject }) => {
             onPress={() => onClearSubject()}
           />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -90,12 +88,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 0.5,
   },
-  subContainer: {
-    paddingTop: spacing.xxl,
+  countdown: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   taskWrapper: {
-    paddingTop: spacing.xxl,
-    paddingBottom: spacing.xxl,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.xl,
     alignItems: 'center',
     justifyContent: 'center',
     color: colors.white,
@@ -108,11 +107,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  countdown: {
-    marginTop: spacing.md,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   buttonWrapper: {
     // flex: 0.3,
