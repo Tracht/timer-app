@@ -1,17 +1,13 @@
 # Focus Time App using Expo Snack
 
-## Developing locally in Android Studio
-- Open the Android Studio app and open up the Focus Time project
-- Connect the physical device via USB cable to computer. 
-- While in the root folder, run the command `expo start`
-- You should see the Browser open with a url of `localhost:19000` 
+## Developing locally using Expo
+- In the terminal, in the project root folder, type `expo start`
+- You should see the Browser open with a url of `localhost:19002` 
+- Follow the instructions in the terminal.
+- To run the App on your physical device, scan the QR code above with Expo Go (Android) or the Camera app (iOS). 
 - The Metro Bundler running in the browser should auto detect your device if it is connected. 
   - If it does not detect your device, you may need to enable developer tools. Steps to do that are here: `https://developer.android.com/training/basics/firstapp/running-app`.
-- You should be able to play around with the App on your physical device.
-
-## Developing locally in XCode for iOS
--  
-
+- The Metro Bundler browser, running on localhost:19002 also has the option to run the android and iOS simulators. 
 
 ## Default Readme That comes with Exporting the Expo Snack App
 Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
