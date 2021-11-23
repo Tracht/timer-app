@@ -6,6 +6,7 @@ import { Timer } from './src/features/timer/Timer';
 import { colors } from './src/utils/colors';
 import { spacing } from './src/utils/sizes';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import uuid from 'react-native-uuid';
 
 const STATUS = {
   COMPLETE: 1, 
@@ -16,9 +17,11 @@ export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
   const [focusHistory, setFocusHistory] = useState([]);
   
+  var testUUID = uuid.v1();
+
   const addFocusHistoryStatus = (subject, status) => {
     setFocusHistory([...focusHistory, {
-       key: String(focusHistory.length + 1), // essential for FlatList
+       key: String(testUUID), // essential for FlatList
        subject, 
        status
     }])
@@ -75,9 +78,11 @@ export default function App() {
           }}
         />
       ) : (
-        <View style={{flex: 0.5}}> 
+        <View style={{flex: 1}}> 
+      
           <Focus addSubject={setFocusSubject} />
           <FocusHistory focusHistory={focusHistory} clearHistory={clearHistory}/>
+        
         </View>
       )}
     </View>

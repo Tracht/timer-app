@@ -12,14 +12,9 @@ export const Countdown = ({ minutes = 1, isPaused, setProgress, onEnd }) => {
 
   const countdown = () => {
     setMillis((time) => {
-      if (time === 0) {
-        clearInterval(interval.current);
-        return time;
-      } else {
         const timeLeft = time - 1000;
-        const timeToCompletion = 1 - (time / minutesToMillis(minutes));
+        // const timeToCompletion = 1 - (time / minutesToMillis(minutes));
         return timeLeft;
-      }
     });
   };
 
@@ -27,6 +22,7 @@ export const Countdown = ({ minutes = 1, isPaused, setProgress, onEnd }) => {
     setProgress(1 - (millis / minutesToMillis(minutes)))
     if (millis === 0) {
       onEnd();
+      clearInterval(interval.current);
     }
   }, [millis])
 

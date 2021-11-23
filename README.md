@@ -4,13 +4,13 @@
 - Open the Android Studio app and open up the Focus Time project
 - Connect the physical device via USB cable to computer. 
 - While in the root folder, run the command `expo start`
-- You should see the Browser open with a url of `localhost:19002` 
+- You should see the Browser open with a url of `localhost:19000` 
 - The Metro Bundler running in the browser should auto detect your device if it is connected. 
   - If it does not detect your device, you may need to enable developer tools. Steps to do that are here: `https://developer.android.com/training/basics/firstapp/running-app`.
 - You should be able to play around with the App on your physical device.
 
 ## Developing locally in XCode for iOS
-- 
+-  
 
 
 ## Default Readme That comes with Exporting the Expo Snack App

@@ -34,10 +34,10 @@ export const Timer = ({ focusSubject, onTimerEnd, onClearSubject }) => {
 
   const onEnd = () => {
     vibrate();
-    setMinutes(DEFAULT_TIME);
-    setProgress(0);
-    setStart(false);
     onTimerEnd();
+    setStart(false);
+    setProgress(0);
+    setMinutes(DEFAULT_TIME);
   };
 
   return (

@@ -6,16 +6,16 @@ export const TimingButtons = ({ onChangeTime }) => {
   return (
     <>
       <View style={styles.timingButton}>
-        <RoundedButton size={75} title="15 s" 
-          onPress={() => onChangeTime(0.25)} />
+        <RoundedButton size={75} title="3 s" 
+          onPress={() => onChangeTime(0.05)} />
       </View>
       <View style={styles.timingButton}>
-        <RoundedButton size={75} title="45 s" 
-          onPress={() => onChangeTime(0.75)} />
+        <RoundedButton size={75} title="5 s" 
+          onPress={() => onChangeTime(0.083)} />
       </View>
       <View style={styles.timingButton}>
-        <RoundedButton size={75} title="90 s" 
-          onPress={() => onChangeTime(1.15)} />
+        <RoundedButton size={75} title="10 s" 
+          onPress={() => onChangeTime(0.166)} />
       </View>
     </>
   );

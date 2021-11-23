@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import { spacing, fontSize } from '../../utils/sizes';
 import { colors } from '../../utils/colors';
@@ -9,25 +9,29 @@ const HistoryItem = ({ item }) => {
   return (
     <Text style={styles.historyItem(item.status)}>
       {item.subject}
+      {/* {JSON.stringify(item)} */}
     </Text>
   )
 }
 
 export const FocusHistory = ({ focusHistory, clearHistory }) => {
+  let flatList = useRef(null);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
-        
-        <SafeAreaView style={{ flex: 0.5, alignItems: 'center' }}>
+        <SafeAreaView style={styles.safeArea}>
           {!!focusHistory.length && (
             <>
               <Text style={styles.title}> Things we have focused on </Text>
               <FlatList
+                ref={flatList}
                 style={styles.flatList}
-                contentContainerStyle={{ flex: 1, alignItems: 'center'}}
+                contentContainerStyle={styles.contentContainerStyle}
                 data={focusHistory}
                 renderItem={HistoryItem}
+                keyExtractor={item => item.key}
+                inverted={false} // inverses direction of scroll
+                showsVerticalScrollIndicator={false} // makes the scroll invisible
+                onContentSizeChange={()=> flatList.current.scrollToEnd()}
               />
               <View style={styles.clearContainer}>
                 <RoundedButton size={75} title="Clear" onPress={() => clearHistory()} />
@@ -35,36 +39,37 @@ export const FocusHistory = ({ focusHistory, clearHistory }) => {
             </>
           )}
         </SafeAreaView>
-      </View>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0.5,
-  },
-  innerContainer: {
-    flex: 1,
-    padding: spacing.md,
-    justifyContent: 'center',
-  },
   historyItem: (status) => ({
     color: status === 0 ? 'red' : 'green', 
     fontSize: fontSize.md,
     marginLeft: spacing.md,
-  }), 
+  }),
+  safeArea: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  flatList: {
+    flex: 1, 
+    margin: spacing.md,
+  },
   title: {
     color: colors.white,
     fontSize: fontSize.lg,
     alignItems: 'center',
-  }, 
-  flatList: {
-    flex: 0.5, 
-    padding: spacing.md,
+  },
+  contentContainerStyle: {
+    // flex: 1, // if you use flex you can't scroll
+    alignItems: 'center',
+    alignContent: 'flex-start',
+    alignSelf: 'flex-end',
+    flexDirection: 'column'
   },
   clearContainer: {
     alignItems: 'center',
-    padding: spacing.md,
-  }
+    margin: spacing.lg,
+  },
 })
