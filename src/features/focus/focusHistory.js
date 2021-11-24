@@ -9,7 +9,6 @@ const HistoryItem = ({ item }) => {
   return (
     <Text style={styles.historyItem(item.status)}>
       {item.subject}
-      {/* {JSON.stringify(item)} */}
     </Text>
   )
 }

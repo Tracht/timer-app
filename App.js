@@ -5,13 +5,10 @@ import { FocusHistory } from './src/features/focus/focusHistory';
 import { Timer } from './src/features/timer/Timer';
 import { colors } from './src/utils/colors';
 import { spacing } from './src/utils/sizes';
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import uuid from 'react-native-uuid';
-
-const STATUS = {
-  COMPLETE: 1, 
-  FAIL: 0, 
-}
+import { saveFocusHistory } from './src/api/saveFocusHistory';
+import { loadFocusHistory } from './src/api/loadFocusHistory';
+import { STATUS } from './src/constants';
 
 export default function App() {
   const [focusSubject, setFocusSubject] = useState(null);
@@ -31,30 +28,12 @@ export default function App() {
     setFocusHistory([]);
   }
 
-  const saveFocusHistory = async () => {
-    try {
-      await AsyncStorage.setItem('focusHistory', JSON.stringify(focusHistory));
-    } catch(e) {
-      console.log('save focus history error:', e)
-    }
-  };
-
-  const loadFocusHistory = async() => {
-    try {
-      const history = await AsyncStorage.getItem('focusHistory');
-      const parsedHistory = history && JSON.parse(history);
-      history && setFocusHistory(parsedHistory)
-    } catch(e) {
-      console.log('load focus history error:', e)
-    }
-  };
-
   useEffect(() => {
-    loadFocusHistory();
+    loadFocusHistory('focusHistory');
   }, [])
 
   useEffect(() => {
-    saveFocusHistory();
+    saveFocusHistory('focusHistory', focusHistory);
   }, [focusHistory])
 
   useEffect(() => {
