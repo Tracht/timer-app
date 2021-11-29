@@ -12,7 +12,15 @@ A countdown timer that helps you stay focused on a task. Type in the task you wa
 - Expo project
 - React Native, Javascript
 - Async Storage from React Native
-- Progress bar from React Native Paper library
+- Progress bar & Text Input from React Native Paper library
+
+## Key React Native elements
+- FlastList
+- SafeAreaView
+- TouchableOpacity
+- Platform
+- Vibration
+- Progress bar
 
 ## Try the App Live / Developing locally using Expo
 - In the project root folder, type `expo start` in the terminal
