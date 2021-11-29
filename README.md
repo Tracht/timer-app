@@ -1,4 +1,4 @@
-# Focus Time App using Expo Snack
+# Focus Time App using Expo
 
 ## What it does
 A countdown timer that helps you stay focused on a task. Type in the task you want to focus on and select the amount of time. You can see a history of all your tasks. Red tasks indicate you've cleared the timer before it ended. Green tasks indicate that the countown ran until the end. 
