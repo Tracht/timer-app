@@ -29,4 +29,13 @@ A countdown timer that helps you stay focused on a task. Type in the task you wa
 - To run the App on your physical device, scan the QR code above with Expo Go (Android) or the Camera app (iOS). 
 - The Metro Bundler running in the browser should auto detect your device if it is connected. 
   - If it does not detect your device, you may need to enable developer tools. Steps to do that are here: `https://developer.android.com/training/basics/firstapp/running-app`.
-- The Metro Bundler browser, running on localhost:19002 also has the option to run the android and iOS simulators. 
+- The Metro Bundler browser, running on localhost:19002 also has the option to run the android and iOS simulators.
+
+## Screenshots
+
+<img width="389" alt="Screenshot 2021-12-12 at 14 52 55" src="https://user-images.githubusercontent.com/28805811/145717492-6ed35fb9-3f6c-4567-8709-62016f400d8c.png">
+
+<img width="396" alt="Screenshot 2021-12-12 at 14 53 08" src="https://user-images.githubusercontent.com/28805811/145717501-14c7a9d6-4dc1-4ab3-8150-f36aef081519.png">
+
+<img width="387" alt="Screenshot 2021-12-12 at 14 54 08" src="https://user-images.githubusercontent.com/28805811/145717521-bd50488d-884e-4c04-a977-c97f60500e32.png">
+
